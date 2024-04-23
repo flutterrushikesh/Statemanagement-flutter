@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State {
   TextEditingController empNameController = TextEditingController();
-  TextEditingController empId = TextEditingController();
+  TextEditingController empIdController = TextEditingController();
   TextEditingController empProject = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -69,7 +69,7 @@ class _HomeScreenState extends State {
                 height: 15,
               ),
               TextFormField(
-                controller: empId,
+                controller: empIdController,
                 decoration: InputDecoration(
                   hintText: "Employee Id",
                   hintStyle: const TextStyle(
