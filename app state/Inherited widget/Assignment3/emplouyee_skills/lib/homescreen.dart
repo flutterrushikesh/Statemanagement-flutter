@@ -1,3 +1,5 @@
+import 'package:emplouyee_skills/inheritedwidget.dart';
+import 'package:emplouyee_skills/showdata.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -149,6 +151,16 @@ class _HomeScreenState extends State {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text("Details saved succesfully"),
+                      ),
+                    );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => EmpData(
+                          empId: empIdController.text,
+                          empName: empNameController.text,
+                          project: empProject.text,
+                          child: const ShowData(),
+                        ),
                       ),
                     );
                   }
