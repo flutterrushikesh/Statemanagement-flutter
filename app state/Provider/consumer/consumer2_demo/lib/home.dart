@@ -61,13 +61,17 @@ class _MainScaffoldState extends State {
                       Text(
                         Provider.of<ChangeData>(context).studBranch,
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         Provider.of<ChangeData>(context).acadmicyear,
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   );
