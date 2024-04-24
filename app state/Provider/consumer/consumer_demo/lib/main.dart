@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
           },
         ),
         ChangeNotifierProvider(create: (context) {
-          return Match(matchNo: 189, runs: 2522);
+          return Match(
+            matchNo: 189,
+            runs: 2522,
+          );
         })
       ],
       child: const MaterialApp(

@@ -72,7 +72,9 @@ class _HomeScreenState extends State {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(
+              height: 20,
+            ),
             // const NormalClass(),
           ],
         ),
