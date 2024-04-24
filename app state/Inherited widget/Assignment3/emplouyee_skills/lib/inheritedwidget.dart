@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
+class Employee {
+  String empName;
+  String project;
+  String empId;
+  List<String> skillsList = [];
+  Employee({required this.empName, required this.empId, required this.project});
+}
+
+
+
 class EmpData extends InheritedWidget {
-  final String empName;
-  final String project;
-  final String empId;
+  final Employee employeeObj;
+  final Function addSkills;
   const EmpData(
       {super.key,
-      required this.empName,
-      required this.empId,
-      required this.project,
+      required this.employeeObj,
+      required this.addSkills,
       required super.child});
 
   static EmpData of(BuildContext context) {
@@ -17,9 +25,10 @@ class EmpData extends InheritedWidget {
 
   @override
   bool updateShouldNotify(EmpData oldWidget) {
-    return empName != oldWidget.empName ||
-        empId != oldWidget.empId ||
-        project != oldWidget.project;
+    return true;
+    // return empName != oldWidget.empName ||
+    //     empId != oldWidget.empId ||
+    //     project != oldWidget.project;
   }
 }
 
@@ -36,3 +45,5 @@ class MySkill extends InheritedWidget {
     return skill != oldWidget.skill;
   }
 }
+
+void ADDsKILL(String skill) {}
