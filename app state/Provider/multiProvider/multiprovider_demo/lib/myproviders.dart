@@ -17,5 +17,6 @@ class Projects extends ChangeNotifier {
   void changeProject(String projectName, String devType) {
     this.projectName = projectName;
     this.devType = devType;
+    notifyListeners();
   }
 }
