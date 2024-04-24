@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
           return Student(studName: "Sangam", prnNo: 238294922);
         }),
         ChangeNotifierProvider(create: (context) {
-          return ChangeData(studBranch: "CS", acadmicyear: "2023 - 2024");
+          return ChangeData(
+            studBranch: "CS",
+            acadmicyear: "2023 - 2024",
+          );
         }),
       ],
       child: const MaterialApp(
