@@ -39,13 +39,13 @@ class _HomeScreenState extends State {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(Provider.of<Player>(context).pName),
+                  const SizedBox(height: 5),
+                  Text("${Provider.of<Player>(context).jerNo}"),
                   Consumer(builder: (context, value, child) {
                     log("In Consumer");
                     return Column(
                       children: [
-                        // Text(Provider.of<Player>(context).pName),
-                        // const SizedBox(height: 5),
-                        // Text("${Provider.of<Player>(context).jerNo}"),
                         const SizedBox(height: 5),
                         Text("${Provider.of<Match>(context).matchNo}"),
                         const SizedBox(height: 5),
