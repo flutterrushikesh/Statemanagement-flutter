@@ -1,5 +1,6 @@
-import 'package:emplouyee_skills/inheritedwidget.dart';
-import 'package:emplouyee_skills/showdata.dart';
+import 'package:emplouyee_skills/controller/inheritedwidget.dart';
+import 'package:emplouyee_skills/model/emp_model.dart';
+import 'package:emplouyee_skills/view/showdata.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,6 +73,7 @@ class _HomeScreenState extends State {
               ),
               TextFormField(
                 controller: empIdController,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: "Employee Id",
                   hintStyle: const TextStyle(
@@ -153,14 +155,15 @@ class _HomeScreenState extends State {
                         content: Text("Details saved succesfully"),
                       ),
                     );
-                    Navigator.of(context).push(
+                    var obj = EmployeeModel(
+                        empName: empNameController.text.trim(),
+                        project: empProject.text.trim(),
+                        empId: empIdController.text.trim());
+
+                    EmpData.of(context).addObj(obj);
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (_) => EmpData(
-                          empId: empIdController.text,
-                          empName: empNameController.text,
-                          project: empProject.text,
-                          child: const ShowData(),
-                        ),
+                        builder: (_) => const ShowData(),
                       ),
                     );
                   }

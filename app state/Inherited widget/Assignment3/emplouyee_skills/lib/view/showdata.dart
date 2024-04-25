@@ -1,5 +1,5 @@
-import 'package:emplouyee_skills/inheritedwidget.dart';
-import 'package:emplouyee_skills/skills.dart';
+import 'package:emplouyee_skills/controller/inheritedwidget.dart';
+import 'package:emplouyee_skills/view/skills.dart';
 import 'package:flutter/material.dart';
 
 class ShowData extends StatefulWidget {
@@ -38,28 +38,8 @@ class _ShowDataState extends State {
                   )
                 ],
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Emp name: ${EmpData.of(context).empName}",
-                      style: const TextStyle(fontSize: 17),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "Emp name: ${EmpData.of(context).empId}",
-                      style: const TextStyle(fontSize: 17),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "Emp name: ${EmpData.of(context).project}",
-                      style: const TextStyle(fontSize: 17),
-                    ),
-                  ],
-                ),
-              ),
+              child:
+                  const Padding(padding: EdgeInsets.all(10), child: MyColumn()),
             ),
             const SizedBox(
               height: 30,
@@ -84,10 +64,42 @@ class _ShowDataState extends State {
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class MyColumn extends StatefulWidget {
+  const MyColumn({super.key});
+  @override
+  State createState() => _MyColumnState();
+}
+
+class _MyColumnState extends State {
+  @override
+  Widget build(BuildContext context) {
+    var empObj = EmpData.of(context).empModelObj;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Emp name: ${empObj!.empName}",
+          style: const TextStyle(fontSize: 17),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          "Emp Id: ${empObj.empId}",
+          style: const TextStyle(fontSize: 17),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          "Emp project: ${empObj.project}",
+          style: const TextStyle(fontSize: 17),
+        ),
+      ],
     );
   }
 }

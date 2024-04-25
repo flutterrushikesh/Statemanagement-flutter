@@ -1,4 +1,6 @@
-import 'package:emplouyee_skills/inheritedwidget.dart';
+import 'package:emplouyee_skills/controller/inheritedwidget.dart';
+import 'package:emplouyee_skills/model/emp_model.dart';
+import 'package:emplouyee_skills/view/view_skill.dart';
 import 'package:flutter/material.dart';
 
 class Skills extends StatefulWidget {
@@ -68,14 +70,18 @@ class _SkillsState extends State {
                 onPressed: () {
                   bool validator = formKey.currentState!.validate();
                   if (validator) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Skill add successfully"),
+                      ),
+                    );
+                    var obj = EmployeeModel(
+                      skill: skillController.text.trim(),
+                    );
+                    EmpData.of(context).addObj(obj);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => MySkill(
-                          skill: skillController.text,
-                          child: Container(
-                            child: Text(MySkill.of(context).skill),
-                          ),
-                        ),
+                        builder: (_) => const ShowSkill(),
                       ),
                     );
                   }
@@ -86,14 +92,13 @@ class _SkillsState extends State {
                   ),
                 ),
                 child: const Text(
-                  "Add skill",
+                  "Show skill",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -101,25 +106,3 @@ class _SkillsState extends State {
     );
   }
 }
-
-// class MyContainer extends StatelessWidget {
-//   const MyContainer({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: const NewContainer(),
-//     );
-//   }
-// }
-
-// class NewContainer extends StatelessWidget {
-//   const NewContainer({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return
-//         // Container(
-//         //   child:
-        
-//     // );
-//   }
-// }
