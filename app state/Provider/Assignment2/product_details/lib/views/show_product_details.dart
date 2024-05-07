@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:product_details/controllers/product_controller.dart';
+import 'package:product_details/controllers/wishlist_controller.dart';
+import 'package:product_details/views/wishlist.dart';
 import 'package:provider/provider.dart';
 
 class ShowProductDetails extends StatefulWidget {
@@ -13,8 +13,9 @@ class ShowProductDetails extends StatefulWidget {
 class _ShowProductDetails extends State {
   @override
   Widget build(BuildContext context) {
-    var objList = Provider.of<ProductController>(context).productModelObjList;
-    print(objList);
+    var objList = Provider.of<ProductController>(context, listen: false);
+    // var objListWishlist=Provider.of<WishListController>(context).
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -22,9 +23,15 @@ class _ShowProductDetails extends State {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const Wishlist(),
+                ),
+              );
+            },
+            child: const Icon(
               Icons.favorite,
               color: Colors.pink,
             ),
@@ -36,8 +43,7 @@ class _ShowProductDetails extends State {
         backgroundColor: Colors.blue.shade200,
       ),
       body: ListView.builder(
-        itemCount: objList.length,
-        // itemCount: 1,
+        itemCount: objList.productModelObjList.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             decoration: BoxDecoration(
@@ -46,20 +52,20 @@ class _ShowProductDetails extends State {
             child: Column(
               children: [
                 const SizedBox(height: 10),
-                Image.network(objList[index].productImg!),
+                Image.network(objList.productModelObjList[index].productImg!),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      objList[index].productName!,
+                      objList.productModelObjList[index].productName!,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
-                      "₹ ${objList[index].productPrice!}",
+                      "₹ ${objList.productModelObjList[index].productPrice!}",
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -74,13 +80,26 @@ class _ShowProductDetails extends State {
                     const SizedBox(
                       width: 85,
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite,
-                        color: Colors.pink,
-                      ),
-                    ),
+                    Consumer(builder: (context, provider, child) {
+                      return GestureDetector(
+                        onTap: () {
+                          Provider.of<ProductController>(context)
+                              .addToFavorite(index: index);
+                          if (objList.productModelObjList[index].isFavorite!) {
+                            Provider.of<WishListController>(context,
+                                    listen: false)
+                                .addToWishList(
+                                    obj: objList.productModelObjList[index]);
+                          }
+                        },
+                        child: Icon(
+                          (objList.productModelObjList[index].isFavorite!)
+                              ? Icons.favorite
+                              : Icons.favorite_border_rounded,
+                          color: Colors.pink,
+                        ),
+                      );
+                    }),
                     const SizedBox(
                       width: 80,
                     ),
@@ -101,7 +120,7 @@ class _ShowProductDetails extends State {
                     ),
                     Consumer(builder: (context, provider, child) {
                       return Text(
-                        "${objList[index].productQuantity}",
+                        "${objList.productModelObjList[index].productQuantity}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       );

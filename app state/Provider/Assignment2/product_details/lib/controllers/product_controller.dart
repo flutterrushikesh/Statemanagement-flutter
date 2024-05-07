@@ -21,4 +21,10 @@ class ProductController extends ChangeNotifier {
         productModelObjList[index].productQuantity! - 1;
     notifyListeners();
   }
+
+  void addToFavorite({required int index}) {
+    productModelObjList[index].isFavorite =
+        productModelObjList[index].isFavorite;
+    notifyListeners();
+  }
 }
