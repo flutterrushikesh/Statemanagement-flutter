@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_inheritedwidget/controllers/login_controller.dart';
+import 'package:login_inheritedwidget/views/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoginController(
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: LoginScreen(),
       ),

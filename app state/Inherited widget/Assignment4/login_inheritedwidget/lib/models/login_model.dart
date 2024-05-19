@@ -1,8 +1,8 @@
-class Login {
-  int phoneNo;
+class LoginModel {
+  String phoneNo;
   String userName;
   String password;
 
-  Login(
+  LoginModel(
       {required this.phoneNo, required this.userName, required this.password});
 }
