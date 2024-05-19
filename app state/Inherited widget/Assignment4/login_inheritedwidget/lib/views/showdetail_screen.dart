@@ -27,7 +27,7 @@ class ShowDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              "Phone number:  ${obj.password}",
+              "Phone number:  ${obj.phoneNo}",
               style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,
@@ -35,7 +35,7 @@ class ShowDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              "Password:  ${obj.phoneNo}",
+              "Password:  ${obj.password}",
               style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,
