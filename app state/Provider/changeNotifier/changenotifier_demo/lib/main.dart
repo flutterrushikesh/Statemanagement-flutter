@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    log("In MyNotifier build");
+    log("In MyApp build");
     return ChangeNotifierProvider(
       create: (context) {
         return Player(
@@ -58,11 +58,25 @@ class _MyNotifierState extends State {
                 Provider.of<Player>(context, listen: false).chanageTeam("CSK");
               },
               child: const Text("Change Team"),
-            )
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const NormalClass(),
           ],
         ),
       ),
     );
+  }
+}
+
+class NormalClass extends StatelessWidget {
+  const NormalClass({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    log("In Normal class build");
+    return const Text("Hello");
   }
 }
 
@@ -79,6 +93,7 @@ class Player extends ChangeNotifier {
       required this.iplTeam});
 
   void chanageTeam(String iplTeam) {
+    log("In change Team ");
     this.iplTeam = iplTeam;
     notifyListeners();
   }
