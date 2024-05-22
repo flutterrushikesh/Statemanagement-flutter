@@ -24,13 +24,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) {
             return Costomer1(
-                foodType: "Pizza", costName: "Rushikesh", totalBill: 540);
+              foodType: "Pizza",
+              costName: "Rushikesh",
+              totalBill: 540,
+            );
           },
         ),
         ChangeNotifierProvider(
           create: (context) {
             return Costomer2(
-                foodType: "Burger", costName: "Sangam", totalBill: 130);
+              foodType: "Burger",
+              costName: "Sangam",
+              totalBill: 130,
+            );
           },
         ),
       ],
