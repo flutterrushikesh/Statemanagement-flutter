@@ -5,10 +5,11 @@ class Costomer2 extends ChangeNotifier {
   int totalBill;
   String foodType;
 
-  Costomer2(
-      {required this.foodType,
-      required this.costName,
-      required this.totalBill});
+  Costomer2({
+    required this.foodType,
+    required this.costName,
+    required this.totalBill,
+  });
 
   void changeData(String foodType, int totalBill) {
     this.totalBill = totalBill;

@@ -35,7 +35,9 @@ class _HomeScreenState extends State {
             const SizedBox(
               height: 10,
             ),
-            Text("${Provider.of<Costomer1>(context).totalBill}"),
+            Text(
+              "${Provider.of<Costomer1>(context).totalBill}",
+            ),
             const SizedBox(
               height: 10,
             ),

@@ -1,5 +1,7 @@
 class Zomato {
   int orderNo;
 
-  Zomato({required this.orderNo});
+  Zomato({
+    required this.orderNo,
+  });
 }
