@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:showproduct_details/controllers/product_controller.dart';
+import 'package:showproduct_details/view/get_product_details.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return ChangeNotifierProvider(
+      create: (context) {
+        return ProductController();
+      },
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: GetProductDetails(),
       ),
     );
   }
