@@ -2,25 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:product_wishlist/models/product_model.dart';
 
 class ProductController extends ChangeNotifier {
-  ProductModel? productModelObj;
+  List productModelObjList = [];
 
-  void addObj(ProductModel productModelObj) {
-    this.productModelObj = productModelObj;
+  void addObj(ProductModel pObj) {
+    productModelObjList.add(pObj);
     notifyListeners();
   }
 
-  void addFavorite() {
-    productModelObj!.isFavorite = !productModelObj!.isFavorite;
+  void addFavorite(int index) {
+    productModelObjList[index]!.isFavorite =
+        !productModelObjList[index]!.isFavorite;
     notifyListeners();
   }
 
-  void addQuantity() {
-    productModelObj!.prodCount = productModelObj!.prodCount + 1;
+  void addQuantity(int index) {
+    productModelObjList[index]!.prodCount =
+        productModelObjList[index]!.prodCount + 1;
     notifyListeners();
   }
 
-  void removeQuantity() {
-    productModelObj!.prodCount = productModelObj!.prodCount - 1;
+  void removeQuantity(int index) {
+    productModelObjList[index]!.prodCount =
+        productModelObjList[index]!.prodCount - 1;
     notifyListeners();
   }
 }

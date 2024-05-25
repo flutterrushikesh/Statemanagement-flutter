@@ -132,12 +132,6 @@ class _GetProductDetailsState extends State {
                         content: Text("Details save successfully"),
                       ),
                     );
-
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        return const DisplayProductDetails();
-                      }),
-                    );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -151,10 +145,28 @@ class _GetProductDetailsState extends State {
                       MaterialStatePropertyAll(Colors.blue.shade200),
                 ),
                 child: const Text(
-                  "Show details",
+                  "Add product in list",
                   style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
-              )
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return const DisplayProductDetails();
+                    }),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll(Colors.blue.shade200),
+                ),
+                child: const Text(
+                  "View product ",
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                ),
+              ),
             ],
           ),
         ),
