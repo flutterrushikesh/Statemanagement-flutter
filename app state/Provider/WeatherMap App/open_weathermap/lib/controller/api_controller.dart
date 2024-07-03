@@ -15,12 +15,13 @@ class WeatherApi {
       final response = await http.get(Uri.parse(apiUrl));
 
       if (response.statusCode == 200) {
-        log('${response.statusCode}');
+        // log('${response.statusCode}');
         log(response.body);
+
         return WeatherModel(jsonDecode(response.body));
       }
     } catch (e) {
-      log(e.toString());
+      // log(e.toString());
     }
     return null;
   }
