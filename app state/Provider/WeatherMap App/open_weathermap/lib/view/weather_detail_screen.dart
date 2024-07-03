@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_weathermap/controller/weather_controller.dart';
 import 'package:open_weathermap/view/home_screen.dart';
@@ -26,7 +27,6 @@ class _WeatherDetailScrennState extends State {
                 },
               ),
             );
-            // Provider.of<WeatherController>(context).obj.();
           },
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -34,13 +34,28 @@ class _WeatherDetailScrennState extends State {
           ),
         ),
         title: Text(
-          "${Provider.of<WeatherController>(context).obj?.location!.name!}",
+          "${Provider.of<WeatherController>(context).obj?.location!.name}",
           style: GoogleFonts.poppins(
             fontSize: 25,
             color: Colors.white,
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () async {
+              setState(() {});
+              await Provider.of<WeatherController>(context, listen: false)
+                  .getWeatherData(
+                      '${Provider.of<WeatherController>(context, listen: false).obj!.location!.name}');
+            },
+            icon: const Icon(
+              Icons.refresh,
+              size: 28,
+              color: Colors.white,
+            ),
+          )
+        ],
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: const Color.fromRGBO(39, 80, 69, 1),
@@ -83,22 +98,24 @@ class _WeatherDetailScrennState extends State {
                     color: Colors.white,
                   ),
                 ),
-                Column(
-                  children: [
-                    Image.network(
-                      'https:${Provider.of<WeatherController>(context).obj!.current!.condition!.icon!}'
-                          .replaceAll('64x64', '128x128'),
-                      scale: 0.7,
-                    ),
-                    Text(
-                      "${Provider.of<WeatherController>(context).obj?.current!.condition!.text}",
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        fontSize: 20,
+                Expanded(
+                  child: Column(
+                    children: [
+                      Image.network(
+                        'https:${Provider.of<WeatherController>(context).obj!.current!.condition!.icon!}'
+                            .replaceAll('64x64', '128x128'),
+                        scale: 0.7,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "${Provider.of<WeatherController>(context).obj?.current!.condition!.text}",
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

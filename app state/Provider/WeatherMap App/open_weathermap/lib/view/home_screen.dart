@@ -1,10 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:open_weathermap/controller/api_controller.dart';
-import 'package:open_weathermap/controller/weather_controller.dart';
 import 'package:open_weathermap/model/weather_model.dart';
+
 import 'package:open_weathermap/view/weather_detail_screen.dart';
+import 'package:open_weathermap/controller/weather_controller.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,71 +19,157 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State {
-  WeatherModel? weatherModelresponse;
+  bool errorModelType = false;
   bool inProgress = false;
 
   String message = 'Search for the location fetch data';
 
   TextEditingController getLocation = TextEditingController();
 
-  GlobalKey<FormState> validTextfield = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    // Future.delayed(Duration(seconds: 3), () {});
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            TextFormField(
-              controller: getLocation,
-              decoration: InputDecoration(
-                suffixIcon: const Icon(Icons.search),
-                hintText: "Search by City",
-                hintStyle: GoogleFonts.inter(fontWeight: FontWeight.w500),
-                contentPadding: const EdgeInsets.all(13),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+      backgroundColor: const Color.fromRGBO(75, 96, 128, 1),
+      body: inProgress
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
               ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Please Enter city name";
-                }
-              },
-            ),
-            if (weatherModelresponse == null)
-              
-          ],
-        ),
-      ),
+            )
+          : errorModelType
+              ? Center(
+                  child: AlertDialog(
+                    title: Row(
+                      children: [
+                        const Icon(
+                          Icons.cancel_outlined,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Please enter valid city name',
+                            style: GoogleFonts.poppins(
+                              // color: Colors.whi,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    content: Text(
+                      '${Provider.of<WeatherController>(context, listen: false).obj.myError.myMessage}',
+                      style: GoogleFonts.poppins(
+                        // color: Colors.whi,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    actionsAlignment: MainAxisAlignment.center,
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {});
+                          errorModelType = false;
+                        },
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            Color.fromRGBO(75, 96, 128, 1),
+                          ),
+                        ),
+                        child: Text(
+                          'Retry',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                    // backgroundColor: Colors.blueAccent,
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      TextFormField(
+                        controller: getLocation,
+                        cursorColor: Colors.black,
+                        cursorWidth: 1.5,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          suffixIcon: const Icon(Icons.search),
+                          hintText: "Search city eg. Pune",
+                          hintStyle: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                          ),
+                          contentPadding: const EdgeInsets.all(13),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      Image.asset('assets/images/search location.png'),
+                    ],
+                  ),
+                ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _getWeatherData(getLocation.text);
-          setState(() {});
-          if (weatherModelresponse != null) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const WeatherDetailScrenn();
-                },
-              ),
+        onPressed: () async {
+          setState(() {
+            inProgress = true;
+          });
+          Future.delayed(const Duration(seconds: 2), () async {
+            await Provider.of<WeatherController>(context, listen: false)
+                .getWeatherData(getLocation.text);
+            setState(
+              () {
+                inProgress = false;
+              },
             );
-            Provider.of<WeatherController>(context, listen: false)
-                .accessObj(weatherModelresponse!);
-          }
+            getLocation.clear();
+            if (Provider.of<WeatherController>(context, listen: false).obj !=
+                    null &&
+                Provider.of<WeatherController>(context, listen: false)
+                        .obj
+                        .runtimeType ==
+                    WeatherModel) {
+              // log('${Provider.of<WeatherController>(context, listen: false).obj.runtimeType}');
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const WeatherDetailScrenn();
+                  },
+                ),
+              );
+            } else {
+              setState(() {});
+              errorModelType = true;
+            }
+          });
         },
+        backgroundColor: Colors.white,
         elevation: 5,
         label: Text(
           'Check Weather',
@@ -90,23 +180,5 @@ class _HomeScreenState extends State {
         ),
       ),
     );
-  }
-
-  void _getWeatherData(String? location) async {
-    setState(() {
-      inProgress = true;
-    });
-    try {
-      weatherModelresponse = await WeatherApi().getCurrentWeather(location!);
-    } catch (e) {
-      setState(() {
-        message = "Failed to load data";
-        weatherModelresponse = null;
-      });
-    } finally {
-      setState(() {
-        inProgress = false;
-      });
-    }
   }
 }

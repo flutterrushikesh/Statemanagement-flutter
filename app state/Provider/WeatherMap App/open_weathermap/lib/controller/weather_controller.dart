@@ -1,12 +1,14 @@
 import 'dart:developer';
 
-import 'package:open_weathermap/model/weather_model.dart';
+import 'package:flutter/material.dart';
+import 'package:open_weathermap/controller/api_controller.dart';
 
-class WeatherController {
-  WeatherModel? obj;
+class WeatherController extends ChangeNotifier {
+  dynamic obj;
 
-  void accessObj(WeatherModel obj) {
-    this.obj = obj;
-    log("Obj acess sucessfully");
+  Future<void> getWeatherData(String? location) async {
+    obj = await WeatherApi().getCurrentWeather(location!);
+    log(obj.toString());
+    notifyListeners();
   }
 }
