@@ -28,7 +28,6 @@ class _HomeScreenState extends State {
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(Duration(seconds: 3), () {});
     return Scaffold(
       backgroundColor: const Color.fromRGBO(75, 96, 128, 1),
       body: inProgress
@@ -139,8 +138,10 @@ class _HomeScreenState extends State {
           setState(() {
             inProgress = true;
           });
+
           var pref = await SharedPreferences.getInstance();
           await pref.setString('location', getLocationController.text);
+
           await pref.setBool('isSearchLocation', false);
           Future.delayed(const Duration(seconds: 2), () async {
             await Provider.of<WeatherController>(context, listen: false)

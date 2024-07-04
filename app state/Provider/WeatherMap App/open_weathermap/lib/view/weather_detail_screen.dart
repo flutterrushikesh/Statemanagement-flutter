@@ -16,7 +16,6 @@ class WeatherDetailScrenn extends StatefulWidget {
 class _WeatherDetailScrennState extends State {
   @override
   Widget build(BuildContext context) {
-    log('IN WeatherDetailsScreen Build');
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -41,7 +40,8 @@ class _WeatherDetailScrennState extends State {
             onPressed: () async {
               await Provider.of<WeatherController>(context, listen: false)
                   .getWeatherData(
-                      '${Provider.of<WeatherController>(context, listen: false).obj!.location!.name}');
+                '${Provider.of<WeatherController>(context, listen: false).obj!.location!.name}',
+              );
             },
             icon: const Icon(
               Icons.refresh,

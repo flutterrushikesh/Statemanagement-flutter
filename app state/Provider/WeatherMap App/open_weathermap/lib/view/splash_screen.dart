@@ -51,18 +51,21 @@ class _SplashScrennState extends State {
             ),
           );
         } else {
-          Future.delayed(const Duration(seconds: 1), () async {
-            await Provider.of<WeatherController>(context, listen: false)
-                .getWeatherData(pref.getString('location'));
+          Future.delayed(
+            const Duration(seconds: 1),
+            () async {
+              await Provider.of<WeatherController>(context, listen: false)
+                  .getWeatherData(pref.getString('location'));
 
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const WeatherDetailScrenn();
-                },
-              ),
-            );
-          });
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const WeatherDetailScrenn();
+                  },
+                ),
+              );
+            },
+          );
         }
       } else {
         Navigator.of(context).pushReplacement(
