@@ -14,7 +14,7 @@ class WeatherApi {
       String apiUrl = "$baseUrl?key=$apiKey&q=$location";
 
       final response = await http.get(Uri.parse(apiUrl));
-      // log(response.body);
+      log(response.body);
 
       if (response.statusCode == 200) {
         // log('${response.statusCode}');

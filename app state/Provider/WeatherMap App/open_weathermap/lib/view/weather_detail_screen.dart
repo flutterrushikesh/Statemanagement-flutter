@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_weathermap/controller/weather_controller.dart';
-import 'package:open_weathermap/view/home_screen.dart';
+
 import 'package:provider/provider.dart';
 
 class WeatherDetailScrenn extends StatefulWidget {
@@ -15,18 +16,12 @@ class WeatherDetailScrenn extends StatefulWidget {
 class _WeatherDetailScrennState extends State {
   @override
   Widget build(BuildContext context) {
+    log('IN WeatherDetailsScreen Build');
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const HomeScreen();
-                },
-              ),
-            );
+            Navigator.of(context).pushReplacementNamed('homeScreen');
           },
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -44,7 +39,6 @@ class _WeatherDetailScrennState extends State {
         actions: [
           IconButton(
             onPressed: () async {
-              setState(() {});
               await Provider.of<WeatherController>(context, listen: false)
                   .getWeatherData(
                       '${Provider.of<WeatherController>(context, listen: false).obj!.location!.name}');

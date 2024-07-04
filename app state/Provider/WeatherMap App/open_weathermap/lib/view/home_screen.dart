@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_weathermap/model/weather_model.dart';
 
-import 'package:open_weathermap/view/weather_detail_screen.dart';
 import 'package:open_weathermap/controller/weather_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,7 +24,7 @@ class _HomeScreenState extends State {
 
   String message = 'Search for the location fetch data';
 
-  TextEditingController getLocation = TextEditingController();
+  TextEditingController getLocationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,6 @@ class _HomeScreenState extends State {
                         ),
                       )
                     ],
-                    // backgroundColor: Colors.blueAccent,
                   ),
                 )
               : Padding(
@@ -101,7 +100,7 @@ class _HomeScreenState extends State {
                         height: 40,
                       ),
                       TextFormField(
-                        controller: getLocation,
+                        controller: getLocationController,
                         cursorColor: Colors.black,
                         cursorWidth: 1.5,
                         decoration: InputDecoration(
@@ -140,29 +139,26 @@ class _HomeScreenState extends State {
           setState(() {
             inProgress = true;
           });
+          var pref = await SharedPreferences.getInstance();
+          await pref.setString('location', getLocationController.text);
+          await pref.setBool('isSearchLocation', false);
           Future.delayed(const Duration(seconds: 2), () async {
             await Provider.of<WeatherController>(context, listen: false)
-                .getWeatherData(getLocation.text);
+                .getWeatherData(getLocationController.text);
             setState(
               () {
                 inProgress = false;
               },
             );
-            getLocation.clear();
+            getLocationController.clear();
             if (Provider.of<WeatherController>(context, listen: false).obj !=
                     null &&
                 Provider.of<WeatherController>(context, listen: false)
                         .obj
                         .runtimeType ==
                     WeatherModel) {
-              // log('${Provider.of<WeatherController>(context, listen: false).obj.runtimeType}');
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const WeatherDetailScrenn();
-                  },
-                ),
-              );
+              Navigator.of(context).pushNamed('weatherScreen');
+              naviagateTo();
             } else {
               setState(() {});
               errorModelType = true;
@@ -180,5 +176,9 @@ class _HomeScreenState extends State {
         ),
       ),
     );
+  }
+
+  void naviagateTo() async {
+    log('IN Shared preferance');
   }
 }
