@@ -19,10 +19,14 @@ class WeatherApi {
       if (response.statusCode == 200) {
         // log('${response.statusCode}');
 
-        return WeatherModel(jsonDecode(response.body));
+        return WeatherModel(
+          jsonDecode(response.body),
+        );
       } else {
         log(response.statusCode.toString());
-        return ErrorModel(jsonDecode(response.body));
+        return ErrorModel(
+          jsonDecode(response.body),
+        );
       }
     } catch (e) {
       // log(e.toString());
