@@ -25,7 +25,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 2. Clone the repository
 
    ```sh
-   git clone https://github.com/AbdQader/flutter_weather_app.git
+   git clone https://github.com/flutterrushikesh/Statemanagement-flutter.git
    ```
 3. Install all the packages by running
    ```sh
