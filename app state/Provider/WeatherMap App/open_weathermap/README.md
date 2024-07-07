@@ -33,7 +33,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
    ```
 4. Navigate to **lib/controller/api_key.dart** and paste your API key to the apiKey variable
    ```dart
-const String apiKey='Your API Key';
+   const String apiKey='Your API Key';
    ```
 5. Run the App
    ```dart
