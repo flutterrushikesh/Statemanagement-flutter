@@ -110,7 +110,6 @@ class _SplashScrennState extends State {
     final List<ConnectivityResult> connectivityResult =
         await (Connectivity().checkConnectivity());
 
-    log("In Where to go");
     Future.delayed(
       const Duration(seconds: 3),
       () async {
@@ -118,12 +117,10 @@ class _SplashScrennState extends State {
           Provider.of<WeatherController>(context, listen: false)
               .inProgressCheck();
         }
-        Provider.of<WeatherController>(context, listen: false).inProgress;
+
         //checks the internet connection on or off.
         if (connectivityResult.contains(ConnectivityResult.mobile) ||
             connectivityResult.contains(ConnectivityResult.wifi)) {
-          log("Connection checked");
-
           Provider.of<WeatherController>(context, listen: false)
               .isChecknternetConnection();
 
@@ -157,7 +154,6 @@ class _SplashScrennState extends State {
         //If internet connection is off.
 
         else {
-          log('In else');
           //to handel the circular progress a
           Provider.of<WeatherController>(context, listen: false)
               .inProgressCheck();
@@ -167,10 +163,5 @@ class _SplashScrennState extends State {
         }
       },
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

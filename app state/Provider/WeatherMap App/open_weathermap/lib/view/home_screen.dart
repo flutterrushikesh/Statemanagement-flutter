@@ -91,44 +91,46 @@ class _HomeScreenState extends State {
                       .isInternetConnection
                   ? Padding(
                       padding: const EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          TextFormField(
-                            controller: getLocationController,
-                            cursorColor: Colors.black,
-                            cursorWidth: 1.5,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              suffixIcon: const Icon(Icons.search),
-                              hintText: "Search city eg. Pune",
-                              hintStyle: GoogleFonts.inter(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                              ),
-                              contentPadding: const EdgeInsets.all(13),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            TextFormField(
+                              controller: getLocationController,
+                              cursorColor: Colors.black,
+                              cursorWidth: 1.5,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                suffixIcon: const Icon(Icons.search),
+                                hintText: "Search city eg. Pune",
+                                hintStyle: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                                contentPadding: const EdgeInsets.all(13),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 100,
-                          ),
-                          Image.asset('assets/images/search location.png'),
-                        ],
+                            const SizedBox(
+                              height: 100,
+                            ),
+                            Image.asset('assets/images/search location.png'),
+                          ],
+                        ),
                       ),
                     )
 
