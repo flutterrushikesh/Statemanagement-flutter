@@ -21,19 +21,14 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 
   
 ## Getting Started
-1. Get your API key by creating an account at [WeatherAPI](https://www.weatherapi.com).
-2. Clone the repository
+1. Clone the repository
 
    ```sh
    git clone https://github.com/flutterrushikesh/Statemanagement-flutter.git and go to this path app state/Provider/WeatherMap App/open_weathermap.
    ```
-3. Install all the packages by running
+2. Install all the packages by running
    ```sh
    flutter pub get
-   ```
-4. Navigate to **lib/controller/api_key.dart** and paste your API key to the apiKey variable
-   ```dart
-   const String apiKey='Your API Key';
    ```
 5. Run the App
    ```dart
