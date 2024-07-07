@@ -36,7 +36,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 const String apiKey='Your API Key';
    ```
 5. Run the App
-   ```dart
+   ```
    flutter run
    ```
 ---
