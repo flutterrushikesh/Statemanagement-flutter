@@ -1,2 +1,1 @@
-//Api key
-const String apiKey = 'your API Key';
+const String apiKey = 'b7263e867a5a4bb79ef100356240107';
