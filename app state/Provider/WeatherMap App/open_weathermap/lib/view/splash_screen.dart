@@ -114,9 +114,11 @@ class _SplashScrennState extends State {
     Future.delayed(
       const Duration(seconds: 3),
       () async {
-        Provider.of<WeatherController>(context, listen: false)
-            .inProgressCheck();
-
+        if (mounted) {
+          Provider.of<WeatherController>(context, listen: false)
+              .inProgressCheck();
+        }
+        Provider.of<WeatherController>(context, listen: false).inProgress;
         //checks the internet connection on or off.
         if (connectivityResult.contains(ConnectivityResult.mobile) ||
             connectivityResult.contains(ConnectivityResult.wifi)) {
@@ -139,6 +141,7 @@ class _SplashScrennState extends State {
 
               //Navigate to weatherDetails screen.
               //named routing.
+
               Navigator.of(context).pushReplacementNamed('weatherScreen');
             }
           } else {
@@ -168,7 +171,6 @@ class _SplashScrennState extends State {
 
   @override
   void dispose() {
-    whereToGo();
     super.dispose();
   }
 }
