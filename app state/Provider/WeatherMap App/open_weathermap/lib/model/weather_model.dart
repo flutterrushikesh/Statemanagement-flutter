@@ -10,10 +10,8 @@ class WeatherModel {
 //fills the weatherModel variables.
   WeatherModel(Map<String, dynamic> json) {
     if (json.isNotEmpty) {
-      log("In weather model");
       location = LocationModel(json['location']);
       current = CurrentModel(json['current']);
-      log('Current Location:   $location');
     }
   }
 }

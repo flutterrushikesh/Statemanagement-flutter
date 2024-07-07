@@ -200,7 +200,6 @@ class _HomeScreenState extends State {
           final List<ConnectivityResult> connectivityResult =
               await (Connectivity().checkConnectivity());
 
-          log('in ontAP');
           //checks the internet connectivity.
           // if connectivity satisfily they navigate to satisfy condition.
           if (connectivityResult.contains(ConnectivityResult.mobile) ||
@@ -209,7 +208,7 @@ class _HomeScreenState extends State {
             //and pass the user entered location to API.
             await Provider.of<WeatherController>(context, listen: false)
                 .getWeatherData(getLocationController.text);
-            log("$connectivityResult");
+
             Future.delayed(
               const Duration(seconds: 2),
               () async {
@@ -226,7 +225,6 @@ class _HomeScreenState extends State {
                             .obj
                             .runtimeType ==
                         WeatherModel) {
-                  log("Weather details screen");
                   //here used named routing to navigate other screen.
                   Navigator.of(context).pushNamed('weatherScreen');
 
@@ -241,14 +239,12 @@ class _HomeScreenState extends State {
                   //setBool() store the bool value.
                   await pref.setBool('isSearchLocation', false);
                 } else {
-                  log("in alert box");
                   Provider.of<WeatherController>(context, listen: false)
                       .isErrorCheck();
                 }
               },
             );
           } else {
-            log("Connnection checed");
             //call this method to check the internet connection flag handle.
             Provider.of<WeatherController>(context, listen: false)
                 .isChecknternetConnection();

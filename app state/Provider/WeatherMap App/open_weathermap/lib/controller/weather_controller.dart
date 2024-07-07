@@ -31,7 +31,6 @@ class WeatherController extends ChangeNotifier {
   //calls when toggle internet connection on or off if satisfy condition.
   void isChecknternetConnection() {
     isInternetConnection = !isInternetConnection;
-    log('$isInternetConnection');
     notifyListeners();
   }
 }

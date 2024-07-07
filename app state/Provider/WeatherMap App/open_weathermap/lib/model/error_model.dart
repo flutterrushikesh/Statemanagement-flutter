@@ -7,7 +7,6 @@ class ErrorModel {
 
 //fills the Error variables.
   ErrorModel(Map<String, dynamic> json) {
-    log('$json');
     myError = json['error'] != null ? ErrorMessageModel(json['error']) : null;
   }
 }
