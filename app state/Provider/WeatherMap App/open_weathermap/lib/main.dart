@@ -6,6 +6,7 @@ import 'package:open_weathermap/view/weather_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  //entry point of application
   runApp(const MyApp());
 }
 
@@ -19,12 +20,13 @@ class MyApp extends StatelessWidget {
         return WeatherController();
       },
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
-          routes: {
-            'homeScreen': (context) => const HomeScreen(),
-            'weatherScreen': (context) => const WeatherDetailScrenn()
-          }),
+        debugShowCheckedModeBanner: false,
+        home: const SplashScreen(),
+        routes: {
+          'homeScreen': (context) => const HomeScreen(),
+          'weatherScreen': (context) => const WeatherDetailScrenn()
+        },
+      ),
     );
   }
 }

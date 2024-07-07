@@ -7,6 +7,7 @@ class WeatherModel {
   LocationModel? location;
   CurrentModel? current;
 
+//fills the weatherModel variables.
   WeatherModel(Map<String, dynamic> json) {
     if (json.isNotEmpty) {
       log("In weather model");

@@ -1,10 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_weathermap/controller/weather_controller.dart';
-
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WeatherDetailScrenn extends StatefulWidget {
   const WeatherDetailScrenn({super.key});
@@ -19,7 +20,13 @@ class _WeatherDetailScrennState extends State {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
+          onPressed: () async {
+            //Create the instance of shared prefrences to save last state in locally
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            //setBool(true) to stores the last state.
+            await pref.setBool('isSearchLocation', true);
+
+            //named routing
             Navigator.of(context).pushReplacementNamed('homeScreen');
           },
           icon: const Icon(
@@ -118,7 +125,8 @@ class _WeatherDetailScrennState extends State {
             ),
             Card(
               elevation: 4,
-              color: Colors.white,
+              shadowColor: Colors.grey,
+              color: const Color.fromARGB(255, 203, 203, 203),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -149,6 +157,7 @@ class _WeatherDetailScrennState extends State {
     );
   }
 
+//Repeated Widget created here.
   Widget dataAndTitleWidget(String title, String data) {
     return Padding(
       padding: const EdgeInsets.all(15),

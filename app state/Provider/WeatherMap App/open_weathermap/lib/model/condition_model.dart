@@ -1,9 +1,10 @@
-class Condition {
+class ConditionModel {
   String? text;
   String? icon;
   int? code;
 
-  Condition(Map<String, dynamic> json) {
+//fills the condition variables.
+  ConditionModel(Map<String, dynamic> json) {
     text = json['text'];
     icon = json['icon'];
     code = json['code'];
