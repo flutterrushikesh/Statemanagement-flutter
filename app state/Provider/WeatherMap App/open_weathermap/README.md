@@ -25,7 +25,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 2. Clone the repository
 
    ```sh
-   git clone https://github.com/flutterrushikesh/Statemanagement-flutter.git
+   git clone https://github.com/flutterrushikesh/Statemanagement-flutter.git and go to app state/Provider/WeatherMap App/open_weathermap this path
    ```
 3. Install all the packages by running
    ```sh
