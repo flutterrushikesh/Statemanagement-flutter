@@ -10,7 +10,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 - [shared_preferences](https://pub.dev/packages/shared_preferences) - to store last searched city on locally.
 - [connectivity_plus](https://pub.dev/packages/connectivity_plus) - To check internet connections eg. wifi or mobile.
 
-## Features🌟<br>
+## Features🌟
 - Discover the weather at your place.
 - Discover the weather around the world.
 - 24-hour weather forecast.
