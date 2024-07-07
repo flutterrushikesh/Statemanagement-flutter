@@ -4,11 +4,11 @@
 The Flutter Weather App is a visually captivating and fully functional User Interface for discovering the weather status. The app allows users to access their accurate weather information in addition to some cities around the world. It provides real-time weather updates, forecasts, and more.
 
 ## Dependencies 📦️
--[google_fonts] (https://pub.dev/packages/google_fonts)- To manage the fonts.
--[http] (https://pub.dev/packages/http) -Http networking package for flutter/dart.
--[provider] (https://pub.dev/packages/provider) - to manage the app state.
--[shared_preferences] (https://pub.dev/packages/shared_preferences) - to store last searched city on locally.
--[connectivity_plus] (https://pub.dev/packages/connectivity_plus) - To check internet connections eg. wifi or mobile.
+- [google_fonts](https://pub.dev/packages/google_fonts)- To manage the fonts.
+- [http](https://pub.dev/packages/http) -Http networking package for flutter/dart.
+- [provider](https://pub.dev/packages/provider) - to manage the app state.
+- [shared_preferences](https://pub.dev/packages/shared_preferences) - to store last searched city on locally.
+- [connectivity_plus](https://pub.dev/packages/connectivity_plus) - To check internet connections eg. wifi or mobile.
 
 ## Features🌟<br>
 -Discover the weather at your place.<br>
