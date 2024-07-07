@@ -1,6 +1,7 @@
 # open_weathermap
 
 <h1>Features</h1> 🌟 <br>
+
 -Discover the weather at your place.<br>
 -Discover the weather around the world.<br>
 -24-hour weather forecast.<br>
