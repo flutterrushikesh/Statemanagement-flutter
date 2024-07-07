@@ -18,7 +18,8 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 - Wind speed and direction.
 - Provide details on humidity, pressure, UV, and chance of rain.
 - Beautiful and friendly user interface.
-- 
+
+  
 ## Getting Started
 1. Get your API key by creating an account at [WeatherAPI](https://www.weatherapi.com).
 2. Clone the repository
