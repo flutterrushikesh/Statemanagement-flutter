@@ -1,7 +1,7 @@
 # open_weathermap
 
 Features 🌟
--Discover the weather at your place.
+-Discover the weather at your place.<br>
 -Discover the weather around the world.
 -24-hour weather forecast.
 -Sunrise time, sunset time
