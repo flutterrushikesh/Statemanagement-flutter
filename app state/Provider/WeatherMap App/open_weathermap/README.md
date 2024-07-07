@@ -1,11 +1,16 @@
 # open_weathermap
 
-<h1>Overview📙</h1> <br>
+## Overview📙 <br>
 The Flutter Weather App is a visually captivating and fully functional User Interface for discovering the weather status. The app allows users to access their accurate weather information in addition to some cities around the world. It provides real-time weather updates, forecasts, and more.
 
 ## Dependencies 📦️
-<h1>Features🌟</h1> <br>
+-[google_fonts] (https://pub.dev/packages/google_fonts)- To manage the fonts.
+-[http] (https://pub.dev/packages/http) -Http networking package for flutter/dart.
+-[provider] (https://pub.dev/packages/provider) - to manage the app state.
+-[shared_preferences] (https://pub.dev/packages/shared_preferences) - to store last searched city on locally.
+-[connectivity_plus] (https://pub.dev/packages/connectivity_plus) - To check internet connections eg. wifi or mobile.
 
+## Features🌟<br>
 -Discover the weather at your place.<br>
 -Discover the weather around the world.<br>
 -24-hour weather forecast.<br>
@@ -13,3 +18,24 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 -Wind speed and direction.<br>
 -Provide details on humidity, pressure, UV, and chance of rain.<br>
 -Beautiful and friendly user interface.<br>
+
+## Getting Started
+1. Get your API key by creating an account at [WeatherAPI](https://www.weatherapi.com).
+2. Clone the repository
+
+   ```sh
+   git clone https://github.com/AbdQader/flutter_weather_app.git
+   ```
+3. Install all the packages by running
+   ```sh
+   flutter pub get
+   ```
+4. Navigate to **lib/utils/constants.dart** and paste your API key to the mApiKey variable
+   ```dart
+   static const mApiKey = 'Your API Key';
+   ```
+5. Run the App
+   ```dart
+   flutter run
+   ```
+---
