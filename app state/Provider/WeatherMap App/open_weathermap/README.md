@@ -11,14 +11,14 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 - [connectivity_plus](https://pub.dev/packages/connectivity_plus) - To check internet connections eg. wifi or mobile.
 
 ## Features🌟<br>
--Discover the weather at your place.<br>
--Discover the weather around the world.<br>
--24-hour weather forecast.<br>
--Sunrise time, sunset time<br>
--Wind speed and direction.<br>
--Provide details on humidity, pressure, UV, and chance of rain.<br>
--Beautiful and friendly user interface.<br>
-
+- Discover the weather at your place.
+- Discover the weather around the world.
+- 24-hour weather forecast.
+- Sunrise time, sunset time
+- Wind speed and direction.
+- Provide details on humidity, pressure, UV, and chance of rain.
+- Beautiful and friendly user interface.
+- 
 ## Getting Started
 1. Get your API key by creating an account at [WeatherAPI](https://www.weatherapi.com).
 2. Clone the repository
