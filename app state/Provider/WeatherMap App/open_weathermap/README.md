@@ -17,6 +17,7 @@ The Flutter Weather App is a visually captivating and fully functional User Inte
 - Sunrise time, sunset time
 - Wind speed and direction.
 - Provide details on humidity, pressure, UV, and chance of rain.
+- Refresh button.(Refresh after 5 min).
 - Beautiful and friendly user interface.
 
   
